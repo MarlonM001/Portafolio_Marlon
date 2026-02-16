@@ -1,0 +1,395 @@
+/* ===== TIMELINE EXPERIENCIA ===== */
+
+.timeline{
+    padding-left: 20px;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 50px;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: -11px;
+    top: 5px;
+    width: 18px;
+    height: 18px;
+    background: #38bdf8;
+    border-radius: 50%;
+    border: 3px solid #020617;
+}
+
+.timeline-content {
+    background: rgba(255,255,255,0.05);
+    padding: 25px 30px;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.1);
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateX(10px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+.timeline-content h3 {
+    margin-top: 10px;
+    font-size: 20px;
+    color: #38bdf8;
+}
+
+.timeline-content h4 {
+    font-size: 15px;
+    opacity: 0.8;
+    margin-bottom: 10px;
+}
+
+.date {
+    font-size: 13px;
+    opacity: 0.7;
+}
+
+.timeline-content p {
+    margin: 15px 0;
+}
+
+/* ===== SKILLS EXPERIENCIA ===== */
+
+.skills-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.skills-container span {
+    background: #38bdf8;
+    color: #0f172a;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+/* ===== RESET GENERAL ===== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: 'Segoe UI', sans-serif;
+    line-height:1.6;
+    scroll-behavior:smooth;
+}
+
+/* ===== NAVBAR ===== */
+
+#navbar{
+    background:#0f172a;
+    color:white;
+    padding:20px 10%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:bold;
+}
+
+.logo span{
+    color:#38bdf8;
+}
+
+.nav-links{
+    list-style:none;
+    display:flex;
+    gap:20px;
+}
+
+.nav-links a{
+    color:white;
+    text-decoration:none;
+    font-size:15px;
+}
+
+.nav-links a:hover{
+    color:#38bdf8;
+}
+
+/* ===== HERO ===== */
+
+.hero{
+    padding:80px 10%;
+    background: linear-gradient(135deg,#0f172a,#1e293b);
+    color:white;
+}
+
+.hero-content{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    flex-wrap:wrap;
+}
+
+.hero-text{
+    max-width:500px;
+}
+
+.hero-text h1{
+    font-size:42px;
+    margin-bottom:10px;
+}
+
+.hero-text h2{
+    color:#38bdf8;
+    margin-bottom:15px;
+}
+
+/* ===== HERO IMAGE MEJORADA ===== */
+
+.hero-image{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.hero-image img{
+    width:320px;
+    height:320px;
+    object-fit:cover;
+    border-radius:50%;
+    border:6px solid #38bdf8;
+    box-shadow:0 20px 40px rgba(0,0,0,0.6);
+    transition:all 0.4s ease;
+}
+
+.hero-image img:hover{
+    transform:scale(1.05);
+    box-shadow:0 25px 50px rgba(56,189,248,0.5);
+}
+
+/* ===== TITULOS ===== */
+
+.section-title{
+    text-align:center;
+    font-size:32px;
+    margin-bottom:40px;
+    position:relative;
+}
+
+.section-title::after{
+    content:"";
+    width:60px;
+    height:4px;
+    display:block;
+    margin:10px auto;
+    border-radius:5px;
+}
+
+/* ===== EXPERIENCIA ===== */
+
+.experiencias{
+    padding:70px 10%;
+    background: linear-gradient(135deg,#020617,#0f172a);
+    color:white;
+}
+
+.experiencias .section-title{
+    color:#38bdf8;
+}
+
+.experiencias .section-title::after{
+    background:#38bdf8;
+}
+
+/* ===== CONOCIMIENTOS EMPIRICOS ===== */
+
+.conocimientos-empiricos{
+    padding:70px 10%;
+    background:#f8fafc;
+}
+
+.conocimientos-empiricos .section-title{
+    color:#0f172a;
+}
+
+.conocimientos-empiricos .section-title::after{
+    background:#14b8a6;
+}
+
+.conocimientos-empiricos .card{
+    background:white;
+    border-top:4px solid #14b8a6;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+}
+
+.conocimientos-empiricos .card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 35px rgba(0,0,0,0.15);
+}
+
+/* ===== ESTUDIOS ===== */
+
+.estudios{
+    padding:70px 10%;
+    background:#1e293b;
+    color:white;
+}
+
+.estudios .section-title::after{
+    background:#f59e0b;
+}
+
+.estudios .card{
+    background:rgba(255,255,255,0.05);
+    border-top:4px solid #f59e0b;
+    border:1px solid rgba(255,255,255,0.1);
+    color:white;
+}
+
+.estudios .card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 35px rgba(0,0,0,0.4);
+}
+
+/* ===== HOBBIES ===== */
+
+.hobbies{
+    padding:70px 10%;
+    background:#020617;
+    color:white;
+}
+
+.hobbies .section-title::after{
+    background:#e11d48;
+}
+
+.hobbies .card{
+    background:rgba(255,255,255,0.05);
+    border-top:4px solid #e11d48;
+    border:1px solid rgba(255,255,255,0.1);
+    color:white;
+}
+
+.hobbies .card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 35px rgba(0,0,0,0.4);
+}
+
+/* ===== SUEÑOS ===== */
+
+.suenos{
+    padding:70px 10%;
+    background:#cffafe;
+}
+
+.suenos .section-title::after{
+    background:#06b6d4;
+}
+
+.suenos .card{
+    background:white;
+    border-top:4px solid #06b6d4;
+    box-shadow:0 8px 25px rgba(0,0,0,0.08);
+}
+
+.suenos .card:hover{
+    transform:translateY(-10px);
+    box-shadow:0 15px 35px rgba(0,0,0,0.15);
+}
+
+/* ===== SISTEMA GLOBAL DE TARJETAS ===== */
+
+.cards-container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    margin-top:40px;
+}
+
+.card{
+    padding:30px 25px;
+    border-radius:15px;
+    transition:all 0.3s ease;
+}
+
+.card h3{
+    margin-bottom:15px;
+    font-size:18px;
+}
+
+.card p{
+    font-size:14px;
+    line-height:1.5;
+}
+
+/* ===== VIDEO ===== */
+
+.video{
+    text-align:center;
+    padding:40px;
+}
+
+.video iframe{
+    width:100%;
+    max-width:700px;
+    height:400px;
+    border-radius:10px;
+}
+
+/* ===== FOOTER ===== */
+
+footer{
+    background:#020617;
+    color:white;
+    text-align:center;
+    padding:30px 10%;
+}
+
+.social-links{
+    margin-top:10px;
+}
+
+.social-links i{
+    font-size:22px;
+    margin:10px;
+    cursor:pointer;
+}
+
+.social-links i:hover{
+    color:#38bdf8;
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media(max-width:768px){
+
+    .hero-content{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    .hero-image img{
+        margin-top:30px;
+        width:220px;
+        height:220px;
+    }
+
+    #navbar{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+}
