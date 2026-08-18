@@ -17,11 +17,22 @@
         <ul class="nav-links">
             <li><a href="#inicio">Inicio</a></li>
             <li><a href="#experiencias">Experiencia</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
             <li><a href="#conocimientos-empiricos">Conocimientos empíricos</a></li>
             <li><a href="#estudios">Estudios</a></li>
             <li><a href="#hobbies">Hobbies</a></li>
             <li><a href="#suenos">Sueños</a></li>
+            <li><a href="#contacto">Contacto</a></li>
         </ul>
+
+        <div class="nav-controls">
+            <button id="theme-toggle" class="icon-btn" type="button" aria-label="Cambiar tema claro/oscuro">
+                <i class="fa-solid fa-moon"></i>
+            </button>
+            <button id="menu-toggle" class="icon-btn hamburger" type="button" aria-label="Abrir menú" aria-expanded="false">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
     </nav>
 </header>
 
@@ -29,6 +40,7 @@
 
 
 <section id="inicio" class="hero">
+    <canvas id="particles" class="particles"></canvas>
     <div class="hero-content">
         <div class="hero-text">
             <h1>Marlon Monsalve</h1>
@@ -73,6 +85,16 @@
             </div>
         </div>
 
+    </div>
+</section>
+
+
+
+<section id="proyectos" class="proyectos">
+    <h2 class="section-title">Proyectos</h2>
+
+    <div id="projects-container" class="projects-container">
+        <!-- Se genera dinámicamente desde data.js -->
     </div>
 </section>
 
@@ -194,6 +216,41 @@
 </section>
 
 
+<section id="contacto" class="contacto">
+    <h2 class="section-title">Contacto</h2>
+
+    <div class="contact-wrapper">
+        <form id="contact-form" class="contact-form" method="POST">
+            <div class="form-group">
+                <label for="name">Nombre</label>
+                <input type="text" id="name" name="name" required placeholder="Tu nombre">
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="tu@email.com">
+            </div>
+
+            <div class="form-group">
+                <label for="message">Mensaje</label>
+                <textarea id="message" name="message" rows="5" required placeholder="Escribe tu mensaje..."></textarea>
+            </div>
+
+            <input type="hidden" name="_subject" value="Nuevo mensaje desde el portafolio">
+            <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+            <button type="submit" class="submit-btn">Enviar mensaje</button>
+
+            <p id="form-status" class="form-status" role="status"></p>
+        </form>
+
+        <div id="social-container" class="social-container">
+            <!-- Íconos sociales generados dinámicamente desde data.js -->
+        </div>
+    </div>
+</section>
+
+
 <div class="video">
     <h3>Video Representativo</h3>
 
@@ -214,13 +271,14 @@
     <div class="footer-content">
         <p>© 2026 Marlon Monsalve - Todos los derechos reservados</p>
 
-        <div class="social-links">
-            <i class="fa-brands fa-github"></i>
-            <i class="fa-brands fa-linkedin"></i>
-            <i class="fa-brands fa-twitter"></i>
+        <div id="footer-social" class="social-links">
+            <!-- Íconos sociales generados dinámicamente desde data.js -->
         </div>
     </div>
 </footer>
+
+<script src="data.js"></script>
+<script src="script.js"></script>
 
 </body>
 </html>
