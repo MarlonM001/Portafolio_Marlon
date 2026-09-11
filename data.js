@@ -30,7 +30,7 @@ window.SITE_DATA = {
     highlight: "🏆 Primer Lugar — Hackathon Regional Casanare (Colombia 5.0) con AgroIA Casanare",
     bio: [
       "Estudiante de Análisis y Desarrollo de Software del SENA con experiencia construyendo y desplegando aplicaciones full-stack reales.",
-      "Integrante del equipo ganador del Primer Lugar en la Hackathon Regional Casanare (Colombia 5.0 — MinTIC, TEVEANDINA S.A.S. y Universidad Distrital) con AgroIA Casanare, un sistema de agentes de Inteligencia Artificial para comercialización agrícola, donde desarrollé el backend y la integración de APIs.",
+      "Integrante del equipo ganador del Primer Lugar en la Hackathon Regional Casanare (Colombia 5.0) con AgroIA Casanare, un sistema de agentes de Inteligencia Artificial para comercialización agrícola, donde desarrollé el backend y la integración de APIs.",
       "He construido y desplegado de forma individual tiendas de e-commerce completas (React, Vite, Tailwind CSS, Node.js/Express), APIs REST en NestJS, Django REST Framework y Go, y sitios web con JavaScript.",
       "Persona proactiva, responsable y con facilidad para el trabajo en equipo. Busco una oportunidad como desarrollador full-stack junior, presencial o remota.",
     ],
