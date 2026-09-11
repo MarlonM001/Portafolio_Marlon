@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Marlon Monsalve — Portafolio</title>
+    <meta name="description" content="Portafolio de Marlon Monsalve, desarrollador full-stack junior. Explora un sistema solar interactivo para conocer mi perfil, proyectos y experiencia.">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/0b4fbe2e64.js" crossorigin="anonymous"></script>
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+</head>
+<body>
+
+<div id="loader">
+    <div class="loader-orbit"><div class="loader-planet"></div></div>
+    <p>Cargando sistema solar…</p>
+</div>
+
+<canvas id="scene"></canvas>
+<canvas id="ambient-fx"></canvas>
+<div id="planet-labels"></div>
+
+<header id="topbar">
+    <div class="brand">
+        <span class="brand-name">Marlon Monsalve</span>
+        <span class="brand-role">Desarrollador Full-Stack</span>
+    </div>
+
+    <button id="menu-toggle" class="icon-btn hamburger" type="button" aria-label="Abrir navegación" aria-expanded="false">
+        <i class="fa-solid fa-satellite"></i>
+    </button>
+
+    <nav id="dock" class="dock">
+        <button class="dock-btn" data-planet="tierra" style="--dot:#4fa8e0"><span class="dot"></span>Sobre mí</button>
+        <button class="dock-btn" data-planet="marte" style="--dot:#c96a45"><span class="dot"></span>Proyectos</button>
+        <button class="dock-btn" data-planet="mercurio" style="--dot:#a9998a"><span class="dot"></span>Experiencia</button>
+        <button class="dock-btn" data-planet="venus" style="--dot:#e0b978"><span class="dot"></span>Estudios</button>
+        <button class="dock-btn" data-planet="jupiter" style="--dot:#c9a06a"><span class="dot"></span>Hobbies</button>
+        <button class="dock-btn" data-planet="saturno" style="--dot:#d8c48a"><span class="dot"></span>Sueños</button>
+        <button class="dock-btn" data-planet="sol" style="--dot:#ffb347"><span class="dot"></span>Contacto</button>
+        <button class="dock-btn" data-planet="agujero-negro" style="--dot:#a970ff"><span class="dot"></span>Debilidades</button>
+        <button class="dock-btn" data-planet="voyager" style="--dot:#6fb7ff"><span class="dot"></span>Voyager 1</button>
+        <button class="dock-btn" data-planet="juno" style="--dot:#ffb347"><span class="dot"></span>Juno</button>
+    </nav>
+</header>
+
+<div id="hint" class="hint">Haz clic en un planeta — o usa el menú — para explorar</div>
+
+<div id="dream-stars"></div>
+
+<aside id="panel" class="panel" aria-hidden="true">
+    <button id="panel-close" class="panel-close" type="button" aria-label="Cerrar">
+        <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div id="panel-content" class="panel-content"></div>
+</aside>
+
+<footer id="site-footer">
+    <p>© 2026 Marlon Monsalve</p>
+    <div id="footer-social" class="social-links"></div>
+</footer>
+
+<script src="data.js"></script>
+<script type="module" src="script.js"></script>
+
+</body>
+</html>
