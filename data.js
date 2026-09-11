@@ -34,7 +34,7 @@ window.SITE_DATA = {
       "He construido y desplegado de forma individual tiendas de e-commerce completas (React, Vite, Tailwind CSS, Node.js/Express), APIs REST en NestJS, Django REST Framework y Go, y sitios web con JavaScript.",
       "Persona proactiva, responsable y con facilidad para el trabajo en equipo. Busco una oportunidad como desarrollador full-stack junior, presencial o remota.",
     ],
-    video: "https://www.youtube.com/embed/SavaU66KxQY",
+    video: "https://www.youtube.com/embed/iUrFW4JTv3c",
   },
 
   // ---------------------------------------------------------
