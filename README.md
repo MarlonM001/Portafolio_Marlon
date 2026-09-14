@@ -2,7 +2,7 @@
 
 Bienvenido al portafolio web de **Marlon Monsalve**, desarrollador full-stack junior.
 
-Este portafolio se presenta como un **sistema solar interactivo en 3D**: cada planeta representa una sección — haz clic (o usa el menú) para explorar mi perfil, proyectos, experiencia, estudios, hobbies, sueños y contacto.
+La entrada es una escena de bienvenida: un personaje jugando frente a un televisor que muestra, en vivo, una vista previa del portafolio — haz clic en la pantalla para entrar. Adentro, el portafolio se presenta como un **sistema solar interactivo en 3D**: cada planeta representa una sección — haz clic (o usa el menú) para explorar mi perfil, proyectos, experiencia, estudios, hobbies, sueños y contacto.
 
 **Visita la versión publicada:**
 [https://marlonm001.github.io/Portafolio_Marlon/](https://marlonm001.github.io/Portafolio_Marlon/)
@@ -25,7 +25,7 @@ Este portafolio se presenta como un **sistema solar interactivo en 3D**: cada pl
 
 ## Descripción del Proyecto
 
-El objetivo de este portafolio es presentar de forma visual, memorable y profesional mi perfil como desarrollador. La escena 3D usa planetas con texturas generadas por código, órbitas animadas y una cámara que se enfoca en el cuerpo celeste seleccionado, abriendo un panel lateral con el contenido correspondiente.
+El objetivo de este portafolio es presentar de forma visual, memorable y profesional mi perfil como desarrollador. La escena 3D usa planetas con texturas reales (NASA/ESA vía Solar System Scope), órbitas animadas y una cámara que se enfoca en el cuerpo celeste seleccionado, abriendo un panel lateral con el contenido correspondiente.
 
 Está construido con **HTML, CSS y JavaScript puro** (sin build ni frameworks), usando [Three.js](https://threejs.org/) vía módulos ES para el render 3D.
 
@@ -33,10 +33,11 @@ Está construido con **HTML, CSS y JavaScript puro** (sin build ni frameworks), 
 
 ## Características Principales
 
+- ✔ Escena de bienvenida con un personaje y un televisor que muestra el portafolio en vivo
 - ✔ Sistema solar 3D interactivo (Three.js) con órbitas, rotación y controles de cámara
 - ✔ Navegación por clic directo en los planetas o desde el menú superior
 - ✔ Panel de contenido deslizante con diseño "glass" y animaciones suaves
-- ✔ Texturas de planetas generadas 100% por código (sin imágenes externas)
+- ✔ Texturas planetarias reales (NASA/ESA, cortesía de Solar System Scope, CC BY 4.0)
 - ✔ Formulario de contacto funcional (sin backend propio, vía FormSubmit)
 - ✔ Contenido controlable desde un único archivo de datos (`data.js`)
 - ✔ Responsivo: menú colapsable y panel a pantalla completa en móvil
@@ -56,9 +57,11 @@ Está construido con **HTML, CSS y JavaScript puro** (sin build ni frameworks), 
 
 ## Cómo editar el contenido
 
-Todo el contenido vive en **`data.js`**: perfil, experiencia, estudios, certificaciones, proyectos, hobbies, sueños, contacto y redes sociales. No hace falta tocar `index.html`, `style.css` ni `script.js` para actualizarlo.
+Todo el contenido vive en **`data.js`**: perfil, experiencia, estudios, certificaciones, proyectos, hobbies, sueños, contacto y redes sociales. No hace falta tocar `sistema-solar.html`, `style.css` ni `script.js` para actualizarlo.
 
 Para agregar o quitar un planeta/sección, edita también `PLANET_CONFIG` y `PANEL_TITLES` en `script.js`.
+
+La pantalla de bienvenida (`index.html`, `landing.css`, `landing.js`) es independiente del sistema solar: el televisor solo muestra una vista previa (`<iframe>`) de `sistema-solar.html` y, al hacer clic, navega ahí.
 
 ### Redes sociales
 
@@ -78,7 +81,7 @@ El formulario usa [FormSubmit.co](https://formsubmit.co), un servicio gratuito q
 
 ## Ejecutar en local
 
-Al usar módulos ES, el sitio debe servirse por HTTP (no abrir `index.html` directamente como archivo):
+Al usar módulos ES, el sitio debe servirse por HTTP (no abrir los `.html` directamente como archivo):
 
 ```bash
 npx serve .

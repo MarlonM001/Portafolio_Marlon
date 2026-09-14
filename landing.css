@@ -1,0 +1,407 @@
+/* ===== VARIABLES ===== */
+
+:root{
+    --bg-1: #05070f;
+    --bg-2: #0c1024;
+    --wall: #10142a;
+    --floor: #0a0d1c;
+    --accent: #38bdf8;
+    --accent-2: #8b5cf6;
+    --accent-3: #ec4899;
+    --text-primary: #f4f6fb;
+    --text-secondary: rgba(244,246,251,0.7);
+    --screen-glow: rgba(56,189,248,0.55);
+    color-scheme: dark;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body{
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+body{
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg-1);
+    color: var(--text-primary);
+}
+
+/* ===== SALA ===== */
+
+.room{
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 0;
+    background:
+        radial-gradient(ellipse 70% 50% at 50% 0%, rgba(139,92,246,0.18), transparent 60%),
+        linear-gradient(180deg, var(--wall) 0%, var(--wall) 62%, var(--floor) 62%, var(--floor) 100%);
+    overflow: hidden;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+.room.leaving{
+    opacity: 0;
+}
+
+.stars{
+    position: absolute;
+    inset: 0;
+    background-image:
+        radial-gradient(1.5px 1.5px at 10% 15%, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 25% 40%, #fff, transparent),
+        radial-gradient(1px 1px at 40% 10%, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 60% 25%, #fff, transparent),
+        radial-gradient(1px 1px at 75% 12%, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 85% 35%, #fff, transparent),
+        radial-gradient(1px 1px at 92% 18%, #fff, transparent),
+        radial-gradient(1.5px 1.5px at 15% 30%, #fff, transparent),
+        radial-gradient(1px 1px at 50% 5%, #fff, transparent);
+    background-repeat: no-repeat;
+    opacity: 0.5;
+    animation: twinkle 5s ease-in-out infinite;
+}
+
+@keyframes twinkle{
+    0%, 100%{ opacity: 0.35; }
+    50%{ opacity: 0.65; }
+}
+
+.room-glow{
+    position: absolute;
+    left: 50%;
+    top: 48%;
+    width: 60vw;
+    height: 60vw;
+    max-width: 700px;
+    max-height: 700px;
+    transform: translate(-50%, -50%);
+    background: radial-gradient(circle, var(--screen-glow), transparent 65%);
+    opacity: 0.35;
+    filter: blur(10px);
+    pointer-events: none;
+    animation: glow-pulse 4s ease-in-out infinite;
+}
+
+@keyframes glow-pulse{
+    0%, 100%{ opacity: 0.28; }
+    50%{ opacity: 0.42; }
+}
+
+/* ===== INTRO ===== */
+
+.intro{
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    margin-bottom: 18px;
+    padding: 0 20px;
+}
+
+.intro h1{
+    font-size: 28px;
+    font-weight: 700;
+    text-shadow: 0 2px 20px rgba(56,189,248,0.5);
+}
+
+.intro p{
+    margin-top: 6px;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+/* ===== ESCENA ===== */
+
+.scene{
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    width: 100%;
+    max-width: 520px;
+    padding: 0 20px;
+}
+
+/* ===== TV ===== */
+
+.tv-unit{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+.tv{
+    position: relative;
+    width: clamp(220px, 34vw, 380px);
+}
+
+.tv-bezel{
+    background: linear-gradient(155deg, #1c2138, #0c0f1e);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    padding: 12px;
+    box-shadow:
+        0 25px 60px rgba(0,0,0,0.55),
+        0 0 60px var(--screen-glow);
+}
+
+.tv-screen{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/10;
+    border-radius: 6px;
+    overflow: hidden;
+    background: #000;
+}
+
+.tv-screen iframe{
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    pointer-events: none;
+}
+
+.tv-screen-link{
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background: rgba(3,5,13,0);
+    transition: background 0.3s ease;
+}
+
+.tv-screen-link:hover,
+.tv-screen-link:focus-visible{
+    background: rgba(3,5,13,0.4);
+    outline: none;
+}
+
+.enter-hint{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    font-size: clamp(11px, 1.6vw, 14px);
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    padding: 10px 16px;
+    border-radius: 30px;
+    background: rgba(15,20,40,0.7);
+    border: 1px solid rgba(255,255,255,0.25);
+    opacity: 0;
+    transform: translateY(8px) scale(0.95);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    white-space: nowrap;
+}
+
+.tv-screen-link:hover .enter-hint,
+.tv-screen-link:focus-visible .enter-hint{
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.tv-cam{
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #2a2f4a;
+    box-shadow: 0 0 4px rgba(56,189,248,0.6);
+}
+
+.tv-stand{
+    width: 70px;
+    height: 26px;
+    background: linear-gradient(180deg, #1c2138, #0c0f1e);
+    border-radius: 0 0 10px 10px;
+    margin-top: -2px;
+}
+
+.tv-shadow{
+    width: clamp(180px, 28vw, 300px);
+    height: 18px;
+    margin-top: 8px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(0,0,0,0.55), transparent 70%);
+}
+
+/* ===== PERSONAJE ===== */
+
+.gamer{
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    width: clamp(200px, 32vw, 320px);
+    margin-top: -6px;
+}
+
+.beanbag{
+    position: absolute;
+    bottom: -6px;
+    width: 100%;
+    height: 60px;
+    background: radial-gradient(ellipse at 50% 0%, #262c4d, #12152a);
+    border-radius: 50% 50% 40% 40% / 60% 60% 40% 40%;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+}
+
+.character{
+    position: relative;
+    width: 100%;
+    height: auto;
+    animation: char-breathe 4s ease-in-out infinite;
+    transform-origin: 50% 100%;
+}
+
+@keyframes char-breathe{
+    0%, 100%{ transform: translateY(0); }
+    50%{ transform: translateY(-4px); }
+}
+
+.char-shadow{ fill: rgba(0,0,0,0.35); }
+
+.char-body{
+    fill: #1b2036;
+    stroke: var(--accent-2);
+    stroke-width: 1.5;
+    stroke-opacity: 0.5;
+}
+
+.char-leg{
+    fill: #1b2036;
+    stroke: var(--accent-2);
+    stroke-width: 1.2;
+    stroke-opacity: 0.4;
+}
+
+.char-arm{
+    fill: #1b2036;
+    stroke: var(--accent-2);
+    stroke-width: 1.2;
+    stroke-opacity: 0.4;
+}
+
+.char-head{
+    fill: #2c3350;
+}
+
+.char-neck,
+.char-ear{
+    fill: #c98f66;
+}
+
+.console-box{
+    fill: #12152a;
+    stroke: var(--accent);
+    stroke-width: 1.2;
+    stroke-opacity: 0.5;
+}
+
+.console-slot{
+    fill: #05070f;
+}
+
+.console-light{
+    fill: #4ade80;
+    filter: drop-shadow(0 0 3px #4ade80);
+}
+
+.cable{
+    fill: none;
+    stroke: var(--accent-2);
+    stroke-width: 3;
+    stroke-linecap: round;
+    opacity: 0.8;
+}
+
+.char-controller rect{
+    fill: #12152a;
+    stroke: var(--accent);
+    stroke-width: 1.4;
+}
+
+.controller-stick{
+    fill: #262c4d;
+    stroke: var(--accent-2);
+    stroke-width: 1;
+}
+
+.controller-btn{
+    fill: var(--accent-3);
+}
+
+.char-controller{
+    animation: controller-tilt 3.2s ease-in-out infinite;
+    transform-origin: 140px 199px;
+}
+
+@keyframes controller-tilt{
+    0%, 100%{ transform: rotate(0deg); }
+    50%{ transform: rotate(-3deg); }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .stars, .room-glow, .character, .char-controller{
+        animation: none;
+    }
+}
+
+/* ===== HINT INFERIOR ===== */
+
+.scroll-hint{
+    position: relative;
+    z-index: 2;
+    margin-top: 22px;
+    font-size: 12px;
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    animation: fade-pulse 2.4s ease-in-out infinite;
+}
+
+@keyframes fade-pulse{
+    0%, 100%{ opacity: 0.5; }
+    50%{ opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce){
+    .scroll-hint{ animation: none; }
+}
+
+/* ===== RESPONSIVE ===== */
+
+@media (max-width: 640px){
+    .room{
+        padding: 32px 0 24px;
+    }
+
+    .gamer{
+        width: 180px;
+    }
+
+    .intro h1{ font-size: 24px; }
+}
