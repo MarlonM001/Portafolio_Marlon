@@ -89,6 +89,13 @@ window.SITE_DATA = {
       demo: "",
     },
     {
+      title: "Ticketing App — Boletería para eventos",
+      description: "Plataforma de venta y control de boletas para eventos: compra pública con checkout, entradas con código QR, escáner de acceso para el staff, punto de venta (caja), inventario de productos, dashboard con estadísticas en tiempo real y reportes en PDF.",
+      tech: ["Next.js", "TypeScript", "Supabase", "PostgreSQL", "Tailwind CSS", "Recharts"],
+      repo: "https://github.com/MarlonM001/ticketing-app",
+      demo: "https://ticketing-app-kappa.vercel.app",
+    },
+    {
       title: "Tienda-Online — Mercado Central",
       description: "Tienda en línea multicategoría con cliente en React/Vite/Tailwind y servidor propio en Express. Panel de administrador completo, checkout por WhatsApp y reportes en PDF.",
       tech: ["React", "Vite", "Tailwind CSS", "Express", "lowdb", "JWT"],
@@ -99,7 +106,7 @@ window.SITE_DATA = {
       title: "Essence Polar — Tienda de Perfumería",
       description: "Tienda de perfumería con catálogo por categorías, checkout vía WhatsApp, cuentas de cliente y panel de administración con reportes de ventas exportables a PDF.",
       tech: ["React", "Vite", "Tailwind CSS v4", "jsPDF"],
-      repo: "https://github.com/MarlonM001/Lociones",
+      repo: "",
       demo: "https://lociones-sable.vercel.app",
     },
     {
@@ -124,12 +131,38 @@ window.SITE_DATA = {
       demo: "",
     },
     {
+      title: "AquaBomba — Mantenimiento de Electrobombas",
+      description: "Sitio web para un negocio de mantenimiento e instalación de electrobombas para piscinas: servicios, galería de trabajos con visor, preguntas frecuentes, formulario de contacto y botón flotante de WhatsApp. Arquitectura modular por componentes.",
+      tech: ["HTML", "CSS", "JavaScript"],
+      repo: "https://github.com/MarlonM001/Motobombas",
+      demo: "https://motobombas.vercel.app",
+    },
+    {
+      title: "Bot Scopus — Biblioteca SENA",
+      description: "Bot de automatización que abre el navegador, entra a la Biblioteca del SENA, inicia sesión en Scopus, busca el tema indicado y abre documentos simulando la lectura de una persona. Se ejecuta con doble clic desde Windows.",
+      tech: ["Python", "Playwright", "Batch"],
+      repo: "https://github.com/MarlonM001/BIBLIOTECA",
+      demo: "",
+    },
+    {
       title: "Lavaautos — NOCTA",
       description: "Landing page para un negocio de lavado y detallado de vehículos, con música electrónica generativa, galería de antes/después y citas vía WhatsApp.",
       tech: ["HTML", "CSS", "JavaScript", "Tone.js"],
       repo: "https://github.com/MarlonM001/Lavaautos",
       demo: "https://lavaautos-seven.vercel.app",
     },
+  ],
+
+  // ---------------------------------------------------------
+  // HABILIDADES — tarjetas flotantes del universo 3D
+  // (solo tecnologías que he usado en mis proyectos)
+  // ---------------------------------------------------------
+  skills: [
+    { group: "Frontend", icon: "fa-solid fa-display", items: ["React", "Next.js", "Vite", "Tailwind CSS", "JavaScript", "HTML y CSS"] },
+    { group: "Backend", icon: "fa-solid fa-server", items: ["Node.js / Express", "NestJS", "Django REST", "FastAPI", "Go", "APIs REST"] },
+    { group: "Datos", icon: "fa-solid fa-database", items: ["PostgreSQL", "Supabase", "MongoDB", "lowdb", "JWT"] },
+    { group: "IA y automatización", icon: "fa-solid fa-robot", items: ["Agentes de IA", "Telegram Bot API", "Playwright", "Python"] },
+    { group: "Herramientas", icon: "fa-solid fa-screwdriver-wrench", items: ["Git y GitHub", "Vercel", "GitHub Pages", "TypeScript", "Three.js"] },
   ],
 
   // ---------------------------------------------------------

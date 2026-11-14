@@ -873,6 +873,7 @@ function openPanel(key) {
   panelContent.innerHTML = buildPanelHTML(key);
   panel.classList.add("open");
   panel.setAttribute("aria-hidden", "false");
+  document.body.classList.add("panel-open");
   if (key === "sol") {
     renderSocialLinks(panelContent.querySelector("#social-container"));
     initContactForm();
@@ -882,6 +883,7 @@ function openPanel(key) {
 function closePanel() {
   panel.classList.remove("open");
   panel.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("panel-open");
 }
 
 panelClose.addEventListener("click", resetView);
@@ -1358,9 +1360,25 @@ window.addEventListener("resize", () => {
 animate();
 initAmbientShootingStars();
 
+/* Enlace directo a un planeta desde la portada: sistema-solar.html#marte */
+function isValidKey(key) {
+  return key === "sol" || !!EXTRA_BODIES[key] || planetMeshes.some((p) => p.key === key);
+}
+
+let deepLinkDone = false;
+function openFromHash() {
+  const key = decodeURIComponent(location.hash.slice(1));
+  if (key && isValidKey(key)) focusPlanet(key);
+}
+
 function hideLoader() {
   document.getElementById("loader").classList.add("hidden");
+  if (!deepLinkDone && !isPreview) {
+    deepLinkDone = true;
+    setTimeout(openFromHash, 400);
+  }
 }
 loadingManager.onLoad = hideLoader;
 loadingManager.onError = hideLoader;
 setTimeout(hideLoader, 8000);
+window.addEventListener("hashchange", openFromHash);

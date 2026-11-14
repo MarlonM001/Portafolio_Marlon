@@ -2,24 +2,27 @@
 
 Bienvenido al portafolio web de **Marlon Monsalve**, desarrollador full-stack junior.
 
-La entrada es una escena de bienvenida: un personaje jugando frente a un televisor que muestra, en vivo, una vista previa del portafolio — haz clic en la pantalla para entrar. Adentro, el portafolio se presenta como un **sistema solar interactivo en 3D**: cada planeta representa una sección — haz clic (o usa el menú) para explorar mi perfil, proyectos, experiencia, estudios, hobbies, sueños y contacto.
+La entrada es una portada estilo "misión espacial": un marco con nebulosa, la Tierra de noche en 3D y un carrusel de 5 diapositivas (Sobre mí, Proyectos, Experiencia, Estudios y Contacto). Al entrar, un salto al hiperespacio te lleva al **universo**: un viaje en cohete guiado por el scroll donde cada parada es una sección del portafolio.
 
 **Visita la versión publicada:**
 [https://marlonm001.github.io/Portafolio_Marlon/](https://marlonm001.github.io/Portafolio_Marlon/)
 
 ---
 
-## Mapa del sistema solar
+## El viaje del universo
 
-| Cuerpo | Sección |
+| Parada | Sección |
 |---|---|
-| 🌍 Tierra | Sobre mí |
-| ♂ Marte | Proyectos |
-| ☿ Mercurio | Experiencia |
+| 🌍 Tierra de noche | Inicio y despegue |
+| 🌕 Luna y astronauta | Sobre mí |
+| 🛰 Estación Espacial | Experiencia |
 | ♀ Venus | Estudios y certificaciones |
-| ♃ Júpiter | Hobbies |
-| ♄ Saturno | Sueños |
+| ☄ Cinturón de tarjetas | Habilidades |
+| 🪐 Planeta con anillo | Proyectos (tarjetas en órbita, clic para ver detalles) |
+| 🔵 Neptuno | Más allá: metas, aprendizaje, sueños, hobbies y áreas de mejora |
 | ☀ Sol | Contacto |
+
+Se navega con el scroll, el menú superior, el riel lateral o las flechas del teclado. Desde la portada se puede entrar directo a una sección: `sistema-solar.html#marte` (proyectos), `#tierra`, `#venus`, `#mercurio`, `#sol`.
 
 ---
 
@@ -33,11 +36,14 @@ Está construido con **HTML, CSS y JavaScript puro** (sin build ni frameworks), 
 
 ## Características Principales
 
-- ✔ Escena de bienvenida con un personaje y un televisor que muestra el portafolio en vivo
-- ✔ Sistema solar 3D interactivo (Three.js) con órbitas, rotación y controles de cámara
-- ✔ Navegación por clic directo en los planetas o desde el menú superior
-- ✔ Panel de contenido deslizante con diseño "glass" y animaciones suaves
-- ✔ Texturas planetarias reales (NASA/ESA, cortesía de Solar System Scope, CC BY 4.0)
+- ✔ Portada con carrusel 01/05, planetas 3D con atmósfera (Three.js), parallax con el mouse y salto al hiperespacio
+- ✔ Navegación de la portada con menú, rueda del mouse, flechas del teclado y deslizar en móvil
+- ✔ Enlaces directos a cada planeta: `sistema-solar.html#marte`, `#tierra`, `#sol`…
+- ✔ Viaje en cohete por el universo guiado por el scroll (Three.js): cámara con recorrido, cohete con llama y partículas, astronauta, Estación Espacial y planetas
+- ✔ Tarjetas 3D de habilidades y proyectos (los proyectos orbitan un planeta y se abren con un clic)
+- ✔ Paneles con diseño "glass" que aparecen en cada parada del viaje
+- ✔ Modelo 3D de la Estación Espacial de NASA 3D Resources (dominio público); Vía Láctea de Solar System Scope (CC BY 4.0)
+- ✔ Texturas planetarias reales (NASA/ESA, cortesía de Solar System Scope, CC BY 4.0); luces nocturnas de la Tierra de NASA Visible Earth (vía ejemplos de three.js)
 - ✔ Formulario de contacto funcional (sin backend propio, vía FormSubmit)
 - ✔ Contenido controlable desde un único archivo de datos (`data.js`)
 - ✔ Responsivo: menú colapsable y panel a pantalla completa en móvil
@@ -57,11 +63,11 @@ Está construido con **HTML, CSS y JavaScript puro** (sin build ni frameworks), 
 
 ## Cómo editar el contenido
 
-Todo el contenido vive en **`data.js`**: perfil, experiencia, estudios, certificaciones, proyectos, hobbies, sueños, contacto y redes sociales. No hace falta tocar `sistema-solar.html`, `style.css` ni `script.js` para actualizarlo.
+Todo el contenido vive en **`data.js`**: perfil, experiencia, estudios, certificaciones, proyectos, hobbies, sueños, contacto y redes sociales. No hace falta tocar `sistema-solar.html`, `universo.css` ni `universo.js` para actualizarlo.
 
-Para agregar o quitar un planeta/sección, edita también `PLANET_CONFIG` y `PANEL_TITLES` en `script.js`.
+Las habilidades (tarjetas del cinturón) están en `skills` dentro de `data.js`. El recorrido de la cámara y las posiciones de los planetas están en `SECTIONS`, `POS` y `CAMERA_KEYS` al inicio de `universo.js`.
 
-La pantalla de bienvenida (`index.html`, `landing.css`, `landing.js`) es independiente del sistema solar: el televisor solo muestra una vista previa (`<iframe>`) de `sistema-solar.html` y, al hacer clic, navega ahí.
+La portada (`index.html`, `landing.css`, `landing.js`) toma sus textos de `data.js`. Las diapositivas se definen en `SLIDES` y la posición de cada planeta en `LAYOUTS`, ambos en `landing.js`. Cada botón "Explorar" abre el sistema solar directamente en su planeta (`sistema-solar.html#clave`).
 
 ### Redes sociales
 

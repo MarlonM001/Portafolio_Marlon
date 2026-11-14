@@ -3,88 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marlon Monsalve — Portafolio</title>
-    <meta name="description" content="Portafolio de Marlon Monsalve, desarrollador full-stack junior. Haz clic en la pantalla para entrar.">
+    <title>Marlon Monsalve — Desarrollador Full-Stack</title>
+    <meta name="description" content="Portafolio de Marlon Monsalve, desarrollador full-stack junior. Proyectos, experiencia, estudios y contacto en un universo interactivo.">
+    <meta name="theme-color" content="#05070f">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&family=Space+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="landing.css">
     <script src="https://kit.fontawesome.com/0b4fbe2e64.js" crossorigin="anonymous"></script>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+        }
+    }
+    </script>
 </head>
 <body>
 
-<div class="room">
-    <div class="stars" aria-hidden="true"></div>
-    <div class="room-glow" aria-hidden="true"></div>
+<!-- Fondo de estrellas fuera del marco -->
+<canvas id="bg-stars" aria-hidden="true"></canvas>
 
-    <header class="intro">
-        <h1>Marlon Monsalve</h1>
-        <p>Desarrollador Full-Stack — dale clic a la pantalla para entrar a mi universo</p>
+<main class="frame" id="frame">
+
+    <!-- Capas de fondo del marco -->
+    <div class="nebula" aria-hidden="true">
+        <span class="neb neb-1"></span>
+        <span class="neb neb-2"></span>
+        <span class="neb neb-3"></span>
+    </div>
+    <canvas id="planet" aria-hidden="true"></canvas>
+    <div class="vignette" aria-hidden="true"></div>
+
+
+    <!-- Barra de navegación -->
+    <header class="nav">
+        <a class="logo" href="#" data-goto="0" aria-label="Inicio — Marlon Monsalve">
+            <span class="logo-badge">
+                <svg viewBox="0 0 64 64" aria-hidden="true">
+                    <defs>
+                        <radialGradient id="lg" cx="35%" cy="30%" r="75%">
+                            <stop offset="0" stop-color="#3b82f6"/>
+                            <stop offset="1" stop-color="#0b1f5c"/>
+                        </radialGradient>
+                    </defs>
+                    <circle cx="32" cy="32" r="26" fill="url(#lg)"/>
+                    <circle cx="19" cy="20" r="1" fill="#fff"/>
+                    <circle cx="44" cy="44" r="1.2" fill="#fff"/>
+                    <circle cx="40" cy="17" r=".8" fill="#fff"/>
+                    <path d="M4 40 C 22 34, 40 22, 62 14 C 46 26, 26 38, 4 40Z" fill="#ef4444"/>
+                    <text x="32" y="38" text-anchor="middle" font-family="Orbitron, sans-serif" font-weight="900" font-size="17" fill="#fff">MM</text>
+                </svg>
+            </span>
+        </a>
+
+        <nav class="nav-links" id="nav-links" aria-label="Secciones">
+            <button type="button" data-goto="0">Sobre mí</button>
+            <button type="button" data-goto="1">Proyectos</button>
+            <button type="button" data-goto="2">Experiencia</button>
+            <button type="button" data-goto="3">Estudios</button>
+            <button type="button" data-goto="4">Contacto</button>
+            <a href="sistema-solar.html" data-warp>Universo 3D</a>
+        </nav>
+
+        <div class="nav-actions">
+            <a class="pill" href="sistema-solar.html" data-warp>
+                <span>Entrar al universo</span>
+                <i class="fa-solid fa-rocket"></i>
+            </a>
+            <div class="socials" id="nav-socials"></div>
+            <button class="icon-btn" id="share-btn" type="button" aria-label="Compartir portafolio">
+                <i class="fa-solid fa-share-nodes"></i>
+            </button>
+            <button class="icon-btn burger" id="burger" type="button" aria-label="Abrir menú" aria-expanded="false" aria-controls="nav-links">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
     </header>
 
-    <div class="scene">
+    <!-- Pestaña lateral izquierda -->
+    <a class="side-tab" href="sistema-solar.html" data-warp>
+        <span>Universo 3D</span>
+    </a>
 
-        <div class="tv-unit">
-            <div class="tv">
-                <div class="tv-bezel">
-                    <div class="tv-screen">
-                        <iframe
-                            src="sistema-solar.html?preview"
-                            title="Vista previa del portafolio"
-                            tabindex="-1"
-                            aria-hidden="true"
-                            loading="lazy"></iframe>
-                        <a class="tv-screen-link" href="sistema-solar.html" aria-label="Entrar al portafolio interactivo de Marlon Monsalve">
-                            <span class="enter-hint">
-                                <i class="fa-solid fa-play"></i>
-                                Haz clic para entrar
-                            </span>
-                        </a>
-                    </div>
-                </div>
-                <div class="tv-cam"></div>
-            </div>
-            <div class="tv-stand"></div>
-            <div class="tv-shadow" aria-hidden="true"></div>
+    <!-- Contenido de la diapositiva -->
+    <section class="hero-copy" id="hero-copy" aria-live="polite">
+        <p class="counter"><span id="counter-current">01</span>/<span id="counter-total">05</span></p>
+        <p class="kicker" id="kicker"></p>
+        <h1 class="title" id="title"></h1>
+        <p class="lead" id="lead"></p>
+        <div class="chips" id="chips"></div>
+        <div class="cta-row">
+            <a class="cta" id="cta" href="sistema-solar.html" data-warp>
+                <span id="cta-label">Explorar</span>
+                <i class="fa-solid fa-arrow-right"></i>
+            </a>
+            <span class="planet-tag" id="planet-tag"></span>
         </div>
+    </section>
 
-        <div class="gamer" aria-hidden="true">
-            <div class="beanbag"></div>
+    <!-- Indicador vertical de progreso -->
+    <nav class="progress" id="progress" aria-label="Diapositivas"></nav>
 
-            <svg class="character" viewBox="0 0 240 230" xmlns="http://www.w3.org/2000/svg">
-                <ellipse class="char-shadow" cx="140" cy="220" rx="102" ry="10"/>
+    <p class="scroll-hint" aria-hidden="true">
+        <i class="fa-solid fa-computer-mouse"></i> Desplázate
+    </p>
+</main>
 
-                <rect class="console-box" x="6" y="184" width="46" height="28" rx="6"/>
-                <rect class="console-slot" x="14" y="192" width="30" height="4" rx="2"/>
-                <circle class="console-light" cx="44" cy="204" r="2.5"/>
-                <path class="cable" d="M44,192 C58,182 48,168 60,158 C72,148 64,168 78,178 C88,185 94,190 98,194"/>
+<!-- Salto al hiperespacio -->
+<canvas id="warp" aria-hidden="true"></canvas>
+<div class="toast" id="toast" role="status"></div>
 
-                <ellipse class="char-leg char-leg-left" cx="100" cy="208" rx="20" ry="15"/>
-                <ellipse class="char-leg char-leg-right" cx="180" cy="208" rx="20" ry="15"/>
-
-                <path class="char-body" d="M92,220 C80,176 84,128 110,104 C128,87 152,87 170,104 C196,128 200,176 188,220 Z"/>
-
-                <path class="char-arm char-arm-left" d="M94,138 C72,148 60,166 62,186 C63,194 70,198 77,194 C87,188 94,173 98,156 Z"/>
-                <path class="char-arm char-arm-right" d="M186,138 C208,148 220,166 218,186 C217,194 210,198 203,194 C193,188 186,173 182,156 Z"/>
-
-                <ellipse class="char-ear char-ear-left" cx="103" cy="66" rx="5" ry="8"/>
-                <ellipse class="char-ear char-ear-right" cx="177" cy="66" rx="5" ry="8"/>
-                <rect class="char-neck" x="128" y="88" width="24" height="20" rx="6"/>
-                <circle class="char-head" cx="140" cy="58" r="38"/>
-
-                <g class="char-controller">
-                    <rect x="100" y="182" width="80" height="34" rx="16"/>
-                    <circle class="controller-stick" cx="120" cy="199" r="8"/>
-                    <circle class="controller-stick" cx="160" cy="199" r="8"/>
-                    <circle class="controller-btn" cx="170" cy="188" r="3"/>
-                    <circle class="controller-btn" cx="178" cy="196" r="3"/>
-                </g>
-            </svg>
-        </div>
-
-    </div>
-
-    <p class="scroll-hint"><i class="fa-solid fa-arrow-pointer"></i> Clic en la pantalla</p>
-</div>
-
-<script src="landing.js"></script>
+<script src="data.js"></script>
+<script type="module" src="landing.js"></script>
 
 </body>
 </html>

@@ -24,7 +24,7 @@ html, body{
 }
 
 body{
-    font-family: 'Segoe UI', system-ui, sans-serif;
+    font-family: "Space Grotesk", "Segoe UI", system-ui, sans-serif;
     background: var(--bg);
     color: var(--text-primary);
     line-height: 1.6;
@@ -825,3 +825,25 @@ body::after{
 .preview-mode #loader p{
     display: none !important;
 }
+
+/* ===== MARCA COMO ENLACE A LA PORTADA ===== */
+a.brand{ text-decoration: none; color: inherit; transition: opacity .2s ease; }
+a.brand:hover{ opacity: .8; }
+
+/* ===== TIPOGRAFÍA (igual que la portada) ===== */
+.brand-name,
+.panel-content h2{
+    font-family: "Orbitron", "Segoe UI", system-ui, sans-serif;
+    letter-spacing: 0.5px;
+}
+.brand-name{ font-size: 17px; font-weight: 900; }
+.panel-content h2{ font-weight: 700; font-size: 22px; line-height: 1.25; }
+
+/* ===== EL PANEL YA NO TAPA EL MENÚ SUPERIOR ===== */
+#topbar{ transition: right .5s cubic-bezier(0.22, 1, 0.36, 1); }
+
+@media (min-width: 861px){
+    body.panel-open #topbar{ right: min(480px, 100%); }
+    body.panel-open .dock{ justify-content: flex-start; }
+}
+.brand{ flex-shrink: 0; white-space: nowrap; }
