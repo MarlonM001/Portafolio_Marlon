@@ -583,9 +583,8 @@ frame.addEventListener(
     const dx = e.changedTouches[0].clientX - touchStart.x;
     const dy = e.changedTouches[0].clientY - touchStart.y;
     touchStart = null;
-    const d = Math.abs(dx) > Math.abs(dy) ? dx : dy;
-    if (Math.abs(d) < 50) return;
-    goTo(current + (d < 0 ? 1 : -1), { user: true });
+    if (Math.abs(dx) < 50 || Math.abs(dx) < Math.abs(dy)) return; // vertical = desplazar la página
+    goTo(current + (dx < 0 ? 1 : -1), { user: true });
   },
   { passive: true }
 );
@@ -801,6 +800,27 @@ window.addEventListener("pageshow", (e) => {
     restartTimer();
   }
 });
+
+/* ============================================================
+   PIE DE PÁGINA (datos desde data.js)
+   ============================================================ */
+{
+  const legal = DATA.legal || {};
+  const c = DATA.contact || {};
+  const v = {
+    fullName: legal.fullName,
+    place: [c.address, (c.location || "").split(",").slice(0, 2).join(",")].filter(Boolean).join(", "),
+    email: c.email,
+    phone: c.phone,
+    year: legal.year,
+  };
+  document.querySelectorAll("#site-footer [data-field]").forEach((el) => {
+    const val = v[el.dataset.field];
+    if (!val) return;
+    el.textContent = val;
+    if (el.tagName === "A") el.href = `mailto:${val}`;
+  });
+}
 
 /* ============================================================
    INICIO

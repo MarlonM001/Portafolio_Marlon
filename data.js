@@ -12,6 +12,19 @@ window.SITE_DATA = {
     email: "stimonl06@gmail.com",
     phone: "+57 312 443 2044",
     location: "Yopal, Casanare, Colombia",
+    // Dirección para notificaciones (la pide la ley; no tiene que ser la de tu casa).
+    // Mientras esté vacía, el sitio muestra solo la ciudad.
+    address: "",
+  },
+
+  // ---------------------------------------------------------
+  // DATOS LEGALES — Ley 1581 de 2012 y Ley 1480 de 2011
+  // ---------------------------------------------------------
+  legal: {
+    fullName: "Marlon Stiven Monsalve Pulido", // como aparece en la cédula
+    policyUrl: "politica-de-datos.html",
+    policyVersion: "13 de noviembre de 2026",
+    year: 2026,
   },
 
   social: {

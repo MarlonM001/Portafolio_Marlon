@@ -27,7 +27,9 @@ body{
     color: var(--ink);
     overflow: hidden;
     display: grid;
-    place-items: center;
+    grid-template-rows: 1fr auto;
+    justify-items: center;
+    align-items: center;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -60,7 +62,8 @@ a{ color: inherit; }
     position: relative;
     z-index: 1;
     width: min(1240px, 94vw);
-    height: min(720px, 88vh);
+    height: min(720px, calc(100vh - 110px));
+    margin-top: 16px;
     border-radius: 34px;
     overflow: hidden;
     isolation: isolate;
@@ -573,6 +576,26 @@ body.warping #warp{ opacity: 1; }
 
 .toast.show{ opacity: 1; transform: translate(-50%, 0); }
 
+/* ===== PIE DE PÁGINA LEGAL ===== */
+
+.site-footer{
+    position: relative;
+    z-index: 2;
+    padding: 12px 20px 16px;
+    text-align: center;
+    font-size: 11.5px;
+    line-height: 1.6;
+    color: var(--ink-3);
+}
+
+.site-footer a{
+    color: var(--ink-2);
+    text-decoration: none;
+    border-bottom: 1px solid rgba(255,255,255,0.18);
+}
+
+.site-footer a:hover{ color: var(--accent); border-color: var(--accent); }
+
 /* ===== RESPONSIVE ===== */
 
 @media (max-width: 1180px){
@@ -612,14 +635,17 @@ body.warping #warp{ opacity: 1; }
 }
 
 @media (max-width: 700px){
-    body{ overflow: hidden; }
+    body{ overflow-x: hidden; overflow-y: auto; display: block; }
 
     .frame{
         width: 100vw;
         height: 100dvh;
+        margin-top: 0;
         border-radius: 0;
         border: 0;
     }
+
+    .site-footer{ padding: 18px 18px 26px; }
 
     .nav{ padding: 16px 16px 0 18px; }
     .logo-badge{ width: 48px; height: 48px; }

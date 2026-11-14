@@ -171,6 +171,8 @@ function tabCards(tab) {
     .join("");
 }
 
+const legal = DATA.legal || {};
+const policyUrl = legal.policyUrl || "politica-de-datos.html";
 const whatsapp = contact.phone ? `https://wa.me/${contact.phone.replace(/\D/g, "")}` : "";
 
 const SECTION_HTML = {
@@ -243,21 +245,38 @@ const SECTION_HTML = {
       <ul class="contact-list">
         ${contact.email ? `<li><a href="mailto:${esc(contact.email)}"><i class="fa-solid fa-envelope"></i>${esc(contact.email)}</a></li>` : ""}
         ${whatsapp ? `<li><a href="${whatsapp}" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i>${esc(contact.phone)}</a></li>` : ""}
-        ${contact.location ? `<li><span><i class="fa-solid fa-location-dot"></i>${esc(contact.location)}</span></li>` : ""}
+        ${contact.location ? `<li><span><i class="fa-solid fa-location-dot"></i>${esc(contact.address ? contact.address + ", " + contact.location : contact.location)}</span></li>` : ""}
       </ul>
       <form class="form" id="contact-form" novalidate>
-        <input type="text" name="name" placeholder="Tu nombre" required autocomplete="name">
-        <input type="email" name="email" placeholder="Tu correo" required autocomplete="email">
-        <textarea name="message" placeholder="Cuéntame sobre tu proyecto o vacante" required></textarea>
-        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off">
+        <input type="text" name="nombre" placeholder="Tu nombre" required autocomplete="name" maxlength="80">
+        <input type="email" name="email" placeholder="Tu correo" required autocomplete="email" maxlength="120">
+        <select name="motivo" required aria-label="Motivo del contacto">
+          <option value="" selected disabled>Motivo del contacto</option>
+          <option>Oferta de empleo</option>
+          <option>Proyecto o servicio</option>
+          <option>Otro</option>
+        </select>
+        <textarea name="mensaje" placeholder="Cuéntame sobre tu proyecto o vacante" required maxlength="3000"></textarea>
+        <input type="text" name="_honey" class="honey" tabindex="-1" autocomplete="off" aria-hidden="true">
         <input type="hidden" name="_subject" value="Nuevo mensaje desde el portafolio">
         <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="autorizacion_datos" value="">
+        <p class="legal-notice">${esc(legal.fullName || profile.name || "")} tratará tus datos solo para responder tu mensaje, procesos de selección o servicios que solicites. Puedes conocer, actualizar, rectificar o pedir que borre tus datos escribiendo a ${esc(contact.email || "")}. <a href="${policyUrl}" target="_blank" rel="noopener">Política de tratamiento de datos</a>.</p>
+        <label class="consent">
+          <input type="checkbox" name="acepto" required>
+          <span>Autorizo el tratamiento de mis datos personales según la <a href="${policyUrl}" target="_blank" rel="noopener">política de tratamiento de datos</a>.</span>
+        </label>
         <button class="btn" type="submit">Enviar mensaje <i class="fa-solid fa-paper-plane"></i></button>
         <p class="form-status" id="form-status" role="status"></p>
       </form>
       <div class="end-actions">
         <button class="btn btn-ghost" type="button" data-goto="inicio"><i class="fa-solid fa-rotate-left"></i> Volver al despegue</button>
         <a class="btn btn-ghost" href="index.html"><i class="fa-solid fa-house"></i> Portada</a>
+      </div>
+      <div class="legal-footer">
+        <p>${esc(legal.fullName || "")} · ${esc((contact.location || "").split(",").slice(0, 2).join(","))}${contact.address ? " · " + esc(contact.address) : ""} · <a href="mailto:${esc(contact.email || "")}">${esc(contact.email || "")}</a> · ${esc(contact.phone || "")}</p>
+        <p><a href="${policyUrl}">Política de tratamiento de datos</a> · <a href="https://www.sic.gov.co" target="_blank" rel="noopener noreferrer">Superintendencia de Industria y Comercio</a> · © ${legal.year || new Date().getFullYear()} ${esc(legal.fullName || "")}</p>
       </div>
       <p class="credits">Texturas: <a href="https://www.solarsystemscope.com/textures/" target="_blank" rel="noopener noreferrer">Solar System Scope</a> (CC BY 4.0) y NASA · Estación Espacial: <a href="https://github.com/nasa/NASA-3D-Resources" target="_blank" rel="noopener noreferrer">NASA 3D Resources</a></p>
     </section>`,
@@ -1103,10 +1122,15 @@ if (form) {
     if (form._honey.value) return;
     const status = $("#form-status");
     if (!form.checkValidity()) {
-      status.textContent = "Completa tu nombre, un correo válido y el mensaje.";
+      status.textContent = form.acepto.checked
+        ? "Completa tu nombre, un correo válido, el motivo y el mensaje."
+        : "Para enviar el mensaje debes autorizar el tratamiento de tus datos.";
       status.className = "form-status error";
       return;
     }
+    /* Constancia de la autorización (Ley 1581 de 2012, art. 9) */
+    const stamp = new Date().toLocaleString("es-CO", { timeZone: "America/Bogota", dateStyle: "long", timeStyle: "medium" });
+    form.autorizacion_datos.value = `Sí. Aceptada el ${stamp} (hora de Colombia). Política vigente desde el ${legal.policyVersion || ""}.`;
     const btn = form.querySelector("button[type=submit]");
     btn.disabled = true;
     status.textContent = "Enviando…";
